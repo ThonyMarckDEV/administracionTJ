@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Payment::observe(PaymentObserver::class);
 
 
-        if (env('APP_ENV') === 'hosting') {
+        if (env('APP_ENV') === 'local') {
           URL::forceScheme('https');
         }
     }
