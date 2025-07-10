@@ -1,0 +1,23 @@
+# -----------------------------------------
+# Dockerfile para Node.js + npm run dev
+# -----------------------------------------
+
+FROM node:18
+
+# Setea directorio de trabajo
+WORKDIR /var/www
+
+# Copia package.json y package-lock.json
+COPY package*.json ./
+
+# Instala dependencias
+RUN npm install
+
+# Copia el resto del proyecto (por si deseas build o linter)
+COPY . .
+
+# Expone el puerto 5173 (Vite) o 8080 (Vue CLI) según tu setup
+EXPOSE 5173
+
+# Comando para desarrollo (Vite)
+CMD ["npm", "run", "dev"]
